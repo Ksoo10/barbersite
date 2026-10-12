@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="barber.css" />
+    <style>
+      #hero {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate; /* Creates a self-contained stacking context */
+        /* 1. Added '&' so the pseudo-element attaches to #hero */
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0; /* Shorthand for top:0, left:0, width:100%, height:100% */
+          z-index: 2; /* Overlay sits above image (1), below text (3) */
+          pointer-events: none;
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.25)
+          );
+        }
+      }
+
+      #hero picture {
+        position: absolute;
+        inset: 0;
+        z-index: 1; /* Background image layer */
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          inset: 0;
+          max-width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+          background-repeat: no-repeat;
+        }
+      }
+
+      .hero__container {
+        position: relative;
+        z-index: 3; /* Content layer sits on top */
+        padding: var(--space-4);
+      }
+      .btn-group {
+        display: flex;
+        gap: var(--space-2);
+        flex-flow: row wrap;
+        padding-block: var(--space-2);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper">
+          <button
+            class="menu-toggle"
+            aria-label="Toggle Menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <div class="wrapper-flex">
+            <ul class="nav-links">
+              <li class="menu-links">
+                <a href="index.html">Home</a>
+              </li>
+              <li class="menu-links">
+                <a href="services.html">Services</a>
+              </li>
+              <li class="menu-links">
+                <a href="services.html">About Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section id="hero">
+      <div class="hero__container">
+        <h1 class="primary__color">Precision Barbering</h1>
+        <p>
+          Reserve your spot today and experience precision grooming designed
+          around you.
+        </p>
+        <div class="btn-group">
+          <a href="#" class="button">Book Your Cut</a>
+          <a href="#" class="button">View Gallery</a>
+        </div>
+      </div>
+
+      <picture>
+        <source media="(max-width: 600px)" srcset="Images/wallpaper.jpg" />
+        <source media="(min-width: 601px)" srcset="Images/wallpaper.jpg" />
+        <img
+          src="/Images/wallpaper.jpg"
+          width="1900"
+          height="1200"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+          alt=""
+        />
+      </picture>
+    </section>
+    <main>
+      <section class="two__column">
+        <div class="container__flexwrap">
+          <div class="standard__block">
+            <h2 class="primary__color">The Man Behind The Chair</h2>
+            <p>
+              Dacasta started his journey behind the chair in 2025 following his
+              graduation from [School Name]. Grounded in professional barbering
+              fundamentals and modern styling techniques, he honed a versatile
+              approach tailored to diverse hair types and textures. Today, he
+              operates out of [Barbershop Name], dedicated to delivering
+              consistent, clean cuts that elevate client confidence across all
+              ethnic backgrounds.
+            </p>
+            <p>
+              For Dacasta, a haircut is more than standard grooming, serving as
+              a focused consultation and an authentic craft. Every appointment
+              centers on sharp line ups, seamless tapers, and precision scissor
+              work, ensuring each client leaves the chair with a polished look
+              that fits their lifestyle and personal identity.
+            </p>
+          </div>
+          <div class="img__wrapper">
+            <img
+              src="/Images/barberimg.jpg"
+              alt="Laptop displaying lines of code on an office desk"
+              loading="lazy"
+              class="card__image"
+              height="150"
+              width="500"
+            />
+          </div>
+        </div>
+      </section>
+      <section class="card__section">
+        <div class="wrapper">
+          <h2 class="primary__color">Grooming for Every Generation</h2>
+          <p>
+            Thoughtfully tailored cuts and beard shaping designed to match your
+            hair type, lifestyle, and routine.
+          </p>
+        </div>
+        <div class="container__flex">
+          <article class="text__card">
+            <div class="card__body">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                width="40"
+                height="40"
+                fill="#4169e1"
+                viewBox="0 0 459.946 459.946"
+              >
+                <path
+                  d="M208.821 221.661a18.23 18.23 0 0 0 7.944 12.264l75.312 49.741c5.923 3.912 12.867 2.076 19.089-1.506 2.547-1.466 15.749-9.668 59.798-38.777L435 252.881c8.011 1.189 15.478-4.345 16.667-12.361s-4.345-15.478-12.361-16.667l-69.587-10.321a14.66 14.66 0 0 0-10.235 2.268l-30.486 20.12-3.771-2.939-27.305 17.413c-6.068 3.87-13.74 3.208-19.048-1.075l-37.963-30.727 43.118 19.079a12.23 12.23 0 0 0 11.522-.872l41.189-26.267c5.694-3.631 7.366-11.191 3.735-16.885s-11.19-7.365-16.884-3.735l-35.661 22.743-37.123-16.426 31.57 4.859 1.066-.68-26.345-20.538c-7.941-6.191-19.397-4.772-25.587 3.169l-19.073 24.466a18.2 18.2 0 0 0-3.617 14.156M165.081 181.891c.023-1.228.242-2.458.661-3.651a11.56 11.56 0 0 1 5.94-6.632l10.95-5.259c5.9-2.834 12.809-.199 15.522 5.45l8.376 17.441c.301.626.529 1.268.709 1.915a27 27 0 0 0 3.484-3.69c9.164-11.755 7.064-28.714-4.691-37.878s-28.714-7.064-37.878 4.691c-6.378 8.181-7.294 18.881-3.302 27.721z"
+                />
+                <path
+                  d="M442.913 302.746c6.597 2.389 13.883-1.023 16.271-7.621 2.389-6.597-1.023-13.882-7.62-16.271l-64.74-23.44a12.7 12.7 0 0 0-11.167 1.24l-73.38 46.898-123.569-81.27c-5.863-3.856-13.74-2.229-17.596 3.633-3.856 5.863-2.229 13.74 3.634 17.596l130.451 85.796a12.702 12.702 0 0 0 13.823.091l7.487-4.785 26.022 55.048h-40.435c-7.017 0-12.704 5.688-12.704 12.705 0 7.016 5.688 12.705 12.704 12.705h143.121c7.017 0 12.704-5.688 12.704-12.705s-5.688-12.705-12.704-12.705h-35.067l-39.153-89.871 13.068-8.352zM181.473 196.157l1.996 4.157a1.8 1.8 0 0 0 2.403.844l10.95-5.259a1.8 1.8 0 0 0 .844-2.403l-8.376-17.441a1.8 1.8 0 0 0-2.403-.844l-10.951 5.259a1.8 1.8 0 0 0-.844 2.403l1.996 4.157-7.201 3.458a25.6 25.6 0 0 1 1.732 10.4z"
+                />
+                <circle cx="83.371" cy="83.427" r="28.552" />
+                <path
+                  d="m147.896 186.098-57.058-8.402-25.115-31.743 26.253 19.889 5.111.753 1.481-18.021c.945-11.501-7.612-21.592-19.113-22.537l-37.138-3.053c-11.501-.946-21.592 7.612-22.537 19.113l-6.599 107.027 8.752 57.064L.597 384.013c-2.431 8.869 2.787 18.029 11.656 20.461 8.874 2.431 18.03-2.792 20.461-11.656l22.275-81.245c.618-2.255.755-4.615.4-6.927l-8.085-52.717 6.478.533 19.862 54.155-16.592 78.35c-2.19 10.342 5.697 20.104 16.306 20.104 7.699 0 14.614-5.371 16.273-13.204l17.584-83.036a16.65 16.65 0 0 0-.657-9.183l-16.671-45.454 2.97-36.127-13.239-1.95c-4.45-.655-12.542-.835-16.455-9.505L43.96 163.171l28.53 36.06a13.88 13.88 0 0 0 8.86 5.118l62.503 9.204c7.592 1.116 14.634-4.133 15.749-11.706 1.117-7.581-4.125-14.632-11.706-15.749"
+                />
+              </svg>
+              <h3 class="card__title">Adult Cuts</h3>
+              <p class="card__copy">
+                Custom fades, classic tapers, and precision beard sculpting
+                designed for sharp daily presentation and professional style.
+              </p>
+              <footer class="card__footer">
+                <div class="card_actions">
+                  <a href="#" class="card__link">Book Now</a>
+                </div>
+              </footer>
+            </div>
+          </article>
+          <article class="text__card">
+            <div class="card__body">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                width="40"
+                height="40"
+                fill="#4169e1"
+                viewBox="0 0 459.946 459.946"
+              >
+                <path
+                  d="M208.821 221.661a18.23 18.23 0 0 0 7.944 12.264l75.312 49.741c5.923 3.912 12.867 2.076 19.089-1.506 2.547-1.466 15.749-9.668 59.798-38.777L435 252.881c8.011 1.189 15.478-4.345 16.667-12.361s-4.345-15.478-12.361-16.667l-69.587-10.321a14.66 14.66 0 0 0-10.235 2.268l-30.486 20.12-3.771-2.939-27.305 17.413c-6.068 3.87-13.74 3.208-19.048-1.075l-37.963-30.727 43.118 19.079a12.23 12.23 0 0 0 11.522-.872l41.189-26.267c5.694-3.631 7.366-11.191 3.735-16.885s-11.19-7.365-16.884-3.735l-35.661 22.743-37.123-16.426 31.57 4.859 1.066-.68-26.345-20.538c-7.941-6.191-19.397-4.772-25.587 3.169l-19.073 24.466a18.2 18.2 0 0 0-3.617 14.156M165.081 181.891c.023-1.228.242-2.458.661-3.651a11.56 11.56 0 0 1 5.94-6.632l10.95-5.259c5.9-2.834 12.809-.199 15.522 5.45l8.376 17.441c.301.626.529 1.268.709 1.915a27 27 0 0 0 3.484-3.69c9.164-11.755 7.064-28.714-4.691-37.878s-28.714-7.064-37.878 4.691c-6.378 8.181-7.294 18.881-3.302 27.721z"
+                />
+                <path
+                  d="M442.913 302.746c6.597 2.389 13.883-1.023 16.271-7.621 2.389-6.597-1.023-13.882-7.62-16.271l-64.74-23.44a12.7 12.7 0 0 0-11.167 1.24l-73.38 46.898-123.569-81.27c-5.863-3.856-13.74-2.229-17.596 3.633-3.856 5.863-2.229 13.74 3.634 17.596l130.451 85.796a12.702 12.702 0 0 0 13.823.091l7.487-4.785 26.022 55.048h-40.435c-7.017 0-12.704 5.688-12.704 12.705 0 7.016 5.688 12.705 12.704 12.705h143.121c7.017 0 12.704-5.688 12.704-12.705s-5.688-12.705-12.704-12.705h-35.067l-39.153-89.871 13.068-8.352zM181.473 196.157l1.996 4.157a1.8 1.8 0 0 0 2.403.844l10.95-5.259a1.8 1.8 0 0 0 .844-2.403l-8.376-17.441a1.8 1.8 0 0 0-2.403-.844l-10.951 5.259a1.8 1.8 0 0 0-.844 2.403l1.996 4.157-7.201 3.458a25.6 25.6 0 0 1 1.732 10.4z"
+                />
+                <circle cx="83.371" cy="83.427" r="28.552" />
+                <path
+                  d="m147.896 186.098-57.058-8.402-25.115-31.743 26.253 19.889 5.111.753 1.481-18.021c.945-11.501-7.612-21.592-19.113-22.537l-37.138-3.053c-11.501-.946-21.592 7.612-22.537 19.113l-6.599 107.027 8.752 57.064L.597 384.013c-2.431 8.869 2.787 18.029 11.656 20.461 8.874 2.431 18.03-2.792 20.461-11.656l22.275-81.245c.618-2.255.755-4.615.4-6.927l-8.085-52.717 6.478.533 19.862 54.155-16.592 78.35c-2.19 10.342 5.697 20.104 16.306 20.104 7.699 0 14.614-5.371 16.273-13.204l17.584-83.036a16.65 16.65 0 0 0-.657-9.183l-16.671-45.454 2.97-36.127-13.239-1.95c-4.45-.655-12.542-.835-16.455-9.505L43.96 163.171l28.53 36.06a13.88 13.88 0 0 0 8.86 5.118l62.503 9.204c7.592 1.116 14.634-4.133 15.749-11.706 1.117-7.581-4.125-14.632-11.706-15.749"
+                />
+              </svg>
+
+              <h3 class="card__title">Youth and Children’s Cuts</h3>
+              <p class="card__copy">
+                Patient, clean, and modern styling for kids and teens in an
+                approachable, comfortable chair environment.
+              </p>
+              <footer class="card__footer">
+                <div class="card_actions">
+                  <a href="#" class="card__link">Book Now</a>
+                </div>
+              </footer>
+            </div>
+          </article>
+          <article class="text__card">
+            <div class="card__body">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xml:space="preserve"
+                width="40"
+                height="40"
+                fill="#4169e1"
+                viewBox="0 0 459.946 459.946"
+              >
+                <path
+                  d="M208.821 221.661a18.23 18.23 0 0 0 7.944 12.264l75.312 49.741c5.923 3.912 12.867 2.076 19.089-1.506 2.547-1.466 15.749-9.668 59.798-38.777L435 252.881c8.011 1.189 15.478-4.345 16.667-12.361s-4.345-15.478-12.361-16.667l-69.587-10.321a14.66 14.66 0 0 0-10.235 2.268l-30.486 20.12-3.771-2.939-27.305 17.413c-6.068 3.87-13.74 3.208-19.048-1.075l-37.963-30.727 43.118 19.079a12.23 12.23 0 0 0 11.522-.872l41.189-26.267c5.694-3.631 7.366-11.191 3.735-16.885s-11.19-7.365-16.884-3.735l-35.661 22.743-37.123-16.426 31.57 4.859 1.066-.68-26.345-20.538c-7.941-6.191-19.397-4.772-25.587 3.169l-19.073 24.466a18.2 18.2 0 0 0-3.617 14.156M165.081 181.891c.023-1.228.242-2.458.661-3.651a11.56 11.56 0 0 1 5.94-6.632l10.95-5.259c5.9-2.834 12.809-.199 15.522 5.45l8.376 17.441c.301.626.529 1.268.709 1.915a27 27 0 0 0 3.484-3.69c9.164-11.755 7.064-28.714-4.691-37.878s-28.714-7.064-37.878 4.691c-6.378 8.181-7.294 18.881-3.302 27.721z"
+                />
+                <path
+                  d="M442.913 302.746c6.597 2.389 13.883-1.023 16.271-7.621 2.389-6.597-1.023-13.882-7.62-16.271l-64.74-23.44a12.7 12.7 0 0 0-11.167 1.24l-73.38 46.898-123.569-81.27c-5.863-3.856-13.74-2.229-17.596 3.633-3.856 5.863-2.229 13.74 3.634 17.596l130.451 85.796a12.702 12.702 0 0 0 13.823.091l7.487-4.785 26.022 55.048h-40.435c-7.017 0-12.704 5.688-12.704 12.705 0 7.016 5.688 12.705 12.704 12.705h143.121c7.017 0 12.704-5.688 12.704-12.705s-5.688-12.705-12.704-12.705h-35.067l-39.153-89.871 13.068-8.352zM181.473 196.157l1.996 4.157a1.8 1.8 0 0 0 2.403.844l10.95-5.259a1.8 1.8 0 0 0 .844-2.403l-8.376-17.441a1.8 1.8 0 0 0-2.403-.844l-10.951 5.259a1.8 1.8 0 0 0-.844 2.403l1.996 4.157-7.201 3.458a25.6 25.6 0 0 1 1.732 10.4z"
+                />
+                <circle cx="83.371" cy="83.427" r="28.552" />
+                <path
+                  d="m147.896 186.098-57.058-8.402-25.115-31.743 26.253 19.889 5.111.753 1.481-18.021c.945-11.501-7.612-21.592-19.113-22.537l-37.138-3.053c-11.501-.946-21.592 7.612-22.537 19.113l-6.599 107.027 8.752 57.064L.597 384.013c-2.431 8.869 2.787 18.029 11.656 20.461 8.874 2.431 18.03-2.792 20.461-11.656l22.275-81.245c.618-2.255.755-4.615.4-6.927l-8.085-52.717 6.478.533 19.862 54.155-16.592 78.35c-2.19 10.342 5.697 20.104 16.306 20.104 7.699 0 14.614-5.371 16.273-13.204l17.584-83.036a16.65 16.65 0 0 0-.657-9.183l-16.671-45.454 2.97-36.127-13.239-1.95c-4.45-.655-12.542-.835-16.455-9.505L43.96 163.171l28.53 36.06a13.88 13.88 0 0 0 8.86 5.118l62.503 9.204c7.592 1.116 14.634-4.133 15.749-11.706 1.117-7.581-4.125-14.632-11.706-15.749"
+                />
+              </svg>
+              <h3 class="card__title">Senior Grooming</h3>
+              <p class="card__copy">
+                Refined, traditional scissor and clipper cuts delivering
+                classic, neat finishes with attentive care.
+              </p>
+              <footer class="card__footer">
+                <div class="card_actions">
+                  <a href="#" class="card__link">Book Now</a>
+                </div>
+              </footer>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="gallery">
+        <div class="wrapper">
+          <h3 class="primary__color font__large">The Portfolio</h3>
+          <p>Real cuts on real clients, crafted with consistency.</p>
+        </div>
+        <div class="container__grid">
+          <div class="grid__item">
+            <figure>
+              <img
+                src="/Images/barberimg.jpg"
+                alt="Laptop displaying lines of code on an office desk"
+                loading="lazy"
+                class="card__image"
+                height="150"
+                width="450"
+              />
+            </figure>
+          </div>
+          <div class="grid__item">
+            <figure>
+              <img
+                src="/Images/barberimg.jpg"
+                alt="Laptop displaying lines of code on an office desk"
+                loading="lazy"
+                class="card__image"
+                height="150"
+                width="450"
+              />
+            </figure>
+          </div>
+          <div class="grid__item">
+            <figure>
+              <img
+                src="/Images/barberimg.jpg"
+                alt="Laptop displaying lines of code on an office desk"
+                loading="lazy"
+                class="card__image"
+                height="150"
+                width="450"
+              />
+            </figure>
+          </div>
+          <div class="grid__item">
+            <figure>
+              <img
+                src="/Images/barberimg.jpg"
+                alt="Laptop displaying lines of code on an office desk"
+                loading="lazy"
+                class="card__image"
+                height="150"
+                width="450"
+              />
+            </figure>
+          </div>
+          <div class="grid__item">
+            <figure>
+              <img
+                src="/Images/barberimg.jpg"
+                alt="Laptop displaying lines of code on an office desk"
+                loading="lazy"
+                class="card__image"
+                height="150"
+                width="450"
+              />
+            </figure>
+          </div>
+          <div class="grid__item">
+            <figure>
+              <img
+                src="/Images/barberimg.jpg"
+                alt="Laptop displaying lines of code on an office desk"
+                loading="lazy"
+                class="card__image"
+                height="150"
+                width="450"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="standard__block">
+          <div class="wrapper">
+            <h4 class="primary__color font__large">Frequently Asked Questions</h4>
+            <p>
+              Everything you need to know about shop policies, appointment prep,
+              and daily chair availability.
+            </p>
+          </div>
+        </div>
+        <div class="accordion-wrapper">
+          <details name="exclusive">
+            <summary>Do you accept walk ins?</summary>
+            <div class="details-wrapper">
+              <p>
+                walk ins are welcomed whenever chair availability allows.
+                Booking online in advance guarantees your dedicated time slot.
+              </p>
+            </div>
+          </details>
+          <details name="exclusive">
+            <summary>
+              How should I prepare my hair before arriving for an appointment?
+            </summary>
+            <div class="details-wrapper">
+              <p>
+                Arrive with clean, product free, and thoroughly dry hair. This
+                ensures clippers and shears pass smoothly for maximum precision
+                during fades and styling.
+              </p>
+            </div>
+          </details>
+          <details name="exclusive">
+            <summary>
+              What is your cancellation and rescheduling policy?
+            </summary>
+            <div class="details-wrapper">
+              <p>
+                Please provide at least 24 hours notice if you need to cancel or
+                adjust your booking. This courtesy allows open slots to be
+                filled by clients currently on the waitlist.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+  </body>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-wrapper">
+        <div class="footer-brand">
+          <h3 class="footer-title">GarageMaster</h3>
+          <p class="footer-text">
+            Fixing and Installing Garages through Delaware
+          </p>
+        </div>
+        <div class="footer-nav">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#service">Services</a></li>
+            <li><a href="#process">Contact</a></li>
+            <li><a href="#faq">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:REPLACE-ME@example.com">contact@garagemaster</a>
+            </li>
+            <li><a href="tel:REPLACEME">888-222-3456</a></li>
+            <li>GarageMaster - Wilmington, Delaware</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 GarageMaster. All rights reserved.</p>
+        <p>&copy; Custom-Made by Delva Web Design</p>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="index.js"></script>
+</html>
