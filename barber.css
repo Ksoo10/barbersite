@@ -4,8 +4,8 @@
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: "Montserrat";
   font-style: normal;
-  font-weight: 800;
-  src: url("/Fonts/montserrat-v31-latin/montserrat-v31-latin-800.woff2")
+  font-weight: 900;
+  src: url("/Fonts/montserrat-v31-latin/montserrat-v31-latin-regular.woff2")
     format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* lato-regular - latin */
@@ -80,9 +80,9 @@
     font-family: var(--font-family);
     font-size: var(--fs-base);
     line-height: 1.5;
-    color: var(--color-white);
+    color: var(--color-black);
     height: 100svh;
-    background-color: var(--color-black);
+    background-color: var(--color-white);
     scrollbar-gutter: stable;
   }
 
@@ -164,8 +164,8 @@
     display: flex;
     justify-content: center;
     gap: var(--space-8);
-    padding-block: var(--space-4);
-    margin-block: var(--space-4);
+    padding: var(--space-6);
+
     @media (width <=769px) {
       display: flex;
       flex-direction: column;
@@ -240,13 +240,18 @@
     display: flex;
     flex-direction: column;
     max-width: 400px;
-    border-radius: var(--space-2);
-    background-color: var(--color-accent);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    &:not(:last-child) {
+      border-right: 1px solid var(--color-accent);
+      @media (width <=769px) {
+        border-bottom: 1px solid var(--color-accent);
+        border-right: none;
+      }
+    }
     @media (width <=769px) {
       display: flex;
       flex-direction: column;
     }
+
     .card__title {
       font-size: var(--fs-medium);
       font-weight: var(--fw-bold);
@@ -258,6 +263,9 @@
       color: var(--color-black);
       padding: var(--space-5);
       width: 100%;
+      @media (width <=769px) {
+        border-bottom: 1px solid var(--color-accent);
+      }
     }
     .card__copy {
       margin-block: var(--space-4);
@@ -357,7 +365,7 @@ li.menu-links {
   .menu-toggle {
     display: block;
     padding: var(--space-6);
-    margin:0;
+    margin: 0;
     color: var(--color-white);
   }
 
@@ -386,26 +394,35 @@ li.menu-links {
 
 /*Color Classes/Font-Sizes*/
 .primary__color {
-  color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.white__color {
+  color: var(--color-white);
+}
+.primary__back {
+  background-color: var(--color-primary);
 }
 .font__large {
   font-size: var(--fs-large);
 }
 /*Color Classes/Font-Sizes*/
 /*Accordion Styling*/
-.accordion-wrapper {
+.accordion-wrapper.panel {
   max-width: 800px;
   margin: 0 auto;
   padding: var(--space-6);
+  background: var(--color-primary);
 }
 details {
   border-bottom: 1px solid var(--color-darkest);
-  padding: var(--space-2);
+  padding-block: var(--space-4);
   margin-bottom: var(--space-3);
   interpolate-size: allow-keywords;
 
   .details-wrapper {
     padding: var(--space-2) 0;
+    color: var(--color-white);
   }
 }
 
@@ -426,7 +443,7 @@ summary {
   align-items: center;
   font-weight: bold;
   cursor: pointer;
-  color: var(--color-accent);
+  color: var(--color-white);
   font-family: var(--ff-header);
   font-size: var(--fs-medium);
   gap: var(--space-4);
@@ -437,7 +454,7 @@ summary {
 
   &::after {
     content: "+";
-    font-size: var(--fs-medium);
+    font-size: var(--fs-large);
     color: var(--clr-grey);
     line-height: 1;
   }
@@ -524,5 +541,16 @@ details[open] summary::after {
     text-align: left;
   }
 }
-
 /* Footer */
+
+.panel {
+  border-radius: var(--space-2);
+  background-color: var(--color-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: var(--space-6);
+  width: 100%;
+  max-width: 1200px;
+  @media (width <= 769px) {
+    border-radius:0;
+  }
+}
