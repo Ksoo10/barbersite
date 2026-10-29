@@ -9,13 +9,12 @@
       #hero {
         position: relative;
         overflow: hidden;
-        isolation: isolate; /* Creates a self-contained stacking context */
-        /* 1. Added '&' so the pseudo-element attaches to #hero */
+        isolation: isolate; 
         &::before {
           content: "";
           position: absolute;
-          inset: 0; /* Shorthand for top:0, left:0, width:100%, height:100% */
-          z-index: 2; /* Overlay sits above image (1), below text (3) */
+          inset: 0;
+          z-index: 2;
           pointer-events: none;
           background: linear-gradient(
             to bottom,
@@ -47,6 +46,7 @@
         position: relative;
         z-index: 3; /* Content layer sits on top */
         padding: var(--space-4);
+        color:white;
         max-width: 600px;
       }
       .btn-group {
